@@ -1,0 +1,33 @@
+div.scrollmenu {
+    background-color: gold;
+    overflow: auto;
+    white-space: nowrap;
+    width: 98%;
+    border-radius: 20px;
+    margin-top: 4vh;
+    transform: translate(-50%, 0%);
+    margin-left: 50%;
+    height: 92%;
+    padding: 5px;
+    }
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+
+iframe{
+    width: 52%;
+    height: 98%;
+    background-color: white;
+    border-radius: 16px;
+    margin: 1px;
+    border: #d4a700 2px solid;
+}

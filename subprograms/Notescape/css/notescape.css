@@ -1,0 +1,62 @@
+div.scrollmenu {
+    background-color: #ededed;
+    overflow: auto;
+    white-space: nowrap;
+    width: 90%;
+    border-radius: 20px;margin-top: 8vh;transform: translate(-50%, 0%);margin-left: 50%;}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+
+#uniwrap, p{
+    display: inline-grid;
+    background-color: white;
+    color: black;
+    width: 265px;
+    /*height: 45px;*/
+    text-align: center;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    margin: 15px;
+    font-weight: bold;
+    font-family: Tahoma;
+    font-size: 14px;
+    line-height: 16px;
+    user-select: none;
+    padding: 12px;
+    cursor: pointer;
+}
+#uniwrap:hover{
+    background-color: cyan;
+}
+#uniwrap:active{
+    background-color: yellow;
+}
+p:hover{
+    background-color: cyan;
+}
+p:active{
+    background-color: yellow;
+}
+img{
+    position:relative;
+    height: 105px;
+    float: inherit;}
+#panelWrap{
+
+    width: 300px;}
+.left{
+
+    float: left;}
+.right{
+
+    float: right;margin-top: -35%;margin-left: -37px;margin-: 17opx;}

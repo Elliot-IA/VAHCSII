@@ -1,0 +1,29 @@
+td {
+    border: 1px solid black;
+    height: 250px;
+    width: 240px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.5em;
+    /* height is 2x line-height, so two lines will display */
+    overflow: hidden;  
+}
+table{
+    border: 1px solid black;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 230px;
+    padding-top: 283px;
+}
+img{
+    max-height: 265px;
+    width: 96%;
+}
+@media not print {
+    body{
+        background-color: lightgreen !important;
+    }
+    button{
+        background-color: lightgreen !important;
+    }
+}

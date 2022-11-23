@@ -1,0 +1,13 @@
+#toggleBtn {
+    width: 80vw;
+    height: 80vw;
+    left: 50%;
+    top: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    font-size: 80px;
+    border: 12px solid black;
+    font-family: monospace;
+}
+p{font-size: 70px;margin-top: 36%;/* margin-bottom: -40%; */width: 100%;text-align: center;}
