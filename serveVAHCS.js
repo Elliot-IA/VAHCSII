@@ -350,7 +350,7 @@ var nullTokens = [
     ["Ian's IPhone13","R10EuEoI2Ldb"],
     ["Ian's Levento Chromebook","uBhz6Cu8WiZE"],
     ["Ian's Levento Chromebook localhost","3i4xy7WcwGiT"],
-    ["Ian's Levento Chromebook 2","3cEpDcKIolvw"]
+    ["Ian's Seconday Levento Chromebook 2","RbOXHYmTdjwA"]
 ];
 app.get("/sniffTrigger", function(req, res){
     var queryObject = url.parse(req.url,true).query;
