@@ -144,7 +144,7 @@ app.get("/Notify_myDoorUnlocked", function(req, res){
 app.get("/nutridiary", function(req, res){
     console.log("Sending Lasse Nutridairy Program!...");
     res.sendFile(__dirname+"/subprograms/Nutridiary/Nutridiary.html");
-    
+
 });
 function executeLassesBarcodeToNutritionFacts(){
     // puppeteer usage as normal
@@ -163,7 +163,7 @@ app.get("/getDairyData", function(req, res){
 function startNewDairyDay(){
     vahcsdb_client.db("Nutridairy").collection("LassesDiary").insertOne(
         {"date":dateAndTime.format(new Date(), "MM.DD.YY"),"nutrientData":{"calories":{"$numberInt":"0"},"totalFat":{"$numberInt":"0"},"saturatedFat":{"$numberInt":"0"},"cholesterol":{"$numberInt":"0"},"sodium":{"$numberInt":"0"},"totalCarbohydrates":{"$numberInt":"0"},"calcium":{"$numberInt":"0"},"dietaryFiber":{"$numberInt":"0"},"iron":{"$numberInt":"0"},"potassium":{"$numberInt":"0"},"protein":{"$numberInt":"0"},"totalSugars":{"$numberInt":"0"},"vitaminA":{"$numberInt":"0"},"vitaminD":{"$numberInt":"0"}}}
-);
+    );
 }
 ////////////////Lasse's Nutridiary////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -181,42 +181,52 @@ var link_myBestWork = "https://www.astradux.org";
 app.get("/0", function(req, res){       //Anderson Labs Free Stuff Catalog
     res.redirect(link_freeStuffCatalog);
     sendEmailToElliot("QR Code 0 was just scanned!", "Sir, someone went to the 'Free Maker Material Catalog' (really the free stuff catalog) from Anderson Labs!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Free Maker Material Catalog from Anderson Labs","timestamp":buildTimestamp2()});
 });
 app.get("/1", function(req, res){       //Toaster Free Stuff Catalog
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Junk%20Vault%20Europa%22,%22location%22]");
     sendEmailToElliot("QR Code 1 was just scanned!", "Sir, someone went to the free stuff catalog from The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"free stuff catalog from The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/2", function(req, res){       //Anderson Labs Listed Object Request Form
     res.redirect(link_listedObjectRequestForm);
     sendEmailToElliot("QR Code 2 was just scanned!", "Sir, someone went to the Listed Object Request Form from Anderson Labs!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Listed Object Request Form from Anderson Labs","timestamp":buildTimestamp2()});
 });
 app.get("/3", function(req, res){       //Toaster Listed Object Request Form
     res.redirect(link_listedObjectRequestForm);
     sendEmailToElliot("QR Code 3 was just scanned!", "Sir, someone went to the Listed Object Request Form from The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Listed Object Request Form from The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/4", function(req, res){       //Exceed Lab Free Maker Material Catalog
     res.redirect(link_freeStuffCatalog);
     sendEmailToElliot("QR Code 4 was just scanned!", "Sir, someone went to the 'Free Maker Material Catalog' (really the free stuff catalog) from The Exceed Lab! Timestamp");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Free Maker Material Catalog from The Exceed Lab","timestamp":buildTimestamp2()});
 });
 app.get("/5", function(req, res){       //Exceed Listed Object Request Form
     res.redirect(link_listedObjectRequestForm);
     sendEmailToElliot("QR Code 5 was just scanned!", "Sir, someone went to the Listed Object Request Form from The Exceed Lab!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Listed Object Request Form from The Exceed Lab","timestamp":buildTimestamp2()});
 });
 app.get("/6", function(req, res){       //Keller Free Stuff Table Free Maker Material Catalog
     res.redirect(link_freeStuffCatalog);
     sendEmailToElliot("QR Code 6 was just scanned!", "Sir, someone went to the Free Maker Material Catalog from The Keller Free Stuff Table!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Free Maker Material Catalog from The Keller Free Stuff Table","timestamp":buildTimestamp2()});
 });
 app.get("/7", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_freeStuffCatalog);
     sendEmailToElliot("QR Code 7 was just scanned!", "Sir, someone went to the Unlisted Object Request Form from The Keller Free Stuff Table! Go here: https://docs.google.com/forms/d/1uCWqe8CX8qVokkpbYlDRHWWB8CacWgyAqhe2s-uQWX8/edit");
+        vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Unlisted Object Request Form from The Keller Free Stuff Table","timestamp":buildTimestamp2()});
 });
 app.get("/8", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_unlistedObjectRequestForm);
     sendEmailToElliot("QR Code 8 was just scanned!", "Sir, someone went to the Unlisted Object Request Form from Anderson Labs!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Unlisted Object Request Form from Anderson Labs","timestamp":buildTimestamp2()});
 });
 app.get("/9", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_freeStuffCatalog);
     sendEmailToElliot("Someone went to the free junk catalog with a link you sent!", "Sir, someone went to the free junk catalog from the free float link!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"free junk catalog from the free float link","timestamp":buildTimestamp2()});
 });
 app.get("/10", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_myBestWork);
@@ -233,10 +243,12 @@ app.get("/12", function(req, res){       //Keller Free Stuff Table Unlisted Obje
 app.get("/13", function(req, res){       //Parts Catalog Anderson Labs
     res.redirect(link_UMNPartsCatalog);
     sendEmailToElliot("QR Code 13 was just scanned!", "Sir, someone went to the Parts Catalog from a poster in Anderson Labs!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Parts Catalog from a poster in Anderson Labs","timestamp":buildTimestamp2()});
 });
 app.get("/14", function(req, res){       //Tools Catalog Anderson Labs
     res.redirect(link_UMNToolsCatalog);
     sendEmailToElliot("QR Code 14 was just scanned!", "Sir, someone went to the Tools Catalog from a poster in Anderson Labs!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Tools Catalog from a poster in Anderson Labs","timestamp":buildTimestamp2()});
 });
 app.get("/15", function(req, res){       //Green Machine Spare Parts Catalog
     res.redirect(link_GreenMachineCatalog+"?code=1");
@@ -245,42 +257,52 @@ app.get("/15", function(req, res){       //Green Machine Spare Parts Catalog
 app.get("/16", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNPartsCatalog);
     sendEmailToElliot("QR Code 16 was just scanned!", "Sir, someone went to the Parts Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Parts Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/17", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNToolsCatalog);
     sendEmailToElliot("QR Code 17 was just scanned!", "Sir, someone went to the Tools Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Tools Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/18", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNPartsCatalog);
     sendEmailToElliot("QR Code 18 was just scanned!", "Sir, someone went to the Parts Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Parts Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/19", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNToolsCatalog);
     sendEmailToElliot("QR Code 19 was just scanned!", "Sir, someone went to the Tools Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Tools Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/20", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNPartsCatalog);
     sendEmailToElliot("QR Code 20 was just scanned!", "Sir, someone went to the Parts Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Parts Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/21", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNToolsCatalog);
     sendEmailToElliot("QR Code 21 was just scanned!", "Sir, someone went to the Tools Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Tools Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/22", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNPartsCatalog);
     sendEmailToElliot("QR Code 22 was just scanned!", "Sir, someone went to the Parts Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Parts Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/23", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect(link_UMNToolsCatalog);
     sendEmailToElliot("QR Code 23 was just scanned!", "Sir, someone went to the Tools Catalog from a poster in The Toaster!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Tools Catalog from a poster in The Toaster","timestamp":buildTimestamp2()});
 });
 app.get("/24", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Junk%20Vault%20Juniper%22,%22location%22]");
     sendEmailToElliot("QR Code 24 was just scanned!", "Sir, scanned to see within junk vault juniper from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Junk Vault Juniper QR Code","timestamp":buildTimestamp2()});
 });
 app.get("/25", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Junk%20Vault%20Avalon%22,%22location%22]");
     sendEmailToElliot("QR Code 25 was just scanned!", "Sir, scanned to see within junk vault avalon from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Junk Vault Avalon QR Code","timestamp":buildTimestamp2()});
 });
 app.get("/26", function(req, res){       //Green Machine Spare Parts Catalog
     res.redirect(link_GreenMachineCatalog+"?code=2");
@@ -305,42 +327,57 @@ app.get("/30", function(req, res){       //Keller Free Stuff Table Unlisted Obje
 app.get("/31", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Junk%20Vault%20Hermes%22,%22location%22]");
     sendEmailToElliot("QR Code 31 was just scanned!", "Sir, scanned to see within Junk Vault Hermes from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Junk Vault Hermes QR Code","timestamp":buildTimestamp2()});
 });
 app.get("/32", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com");
     sendEmailToElliot("Someone used free junk Z-Link!", "Sir, someone went to free junk site from the z-link! That means someone voluntarily looked it up!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"JRARASS Z-Link","timestamp":buildTimestamp2()});
 });
 app.get("/33", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com");
-    sendEmailToElliot("Someone used free junk Instagram Z-Link!", "Sir, someone went to free junk site from the instagram z-link! That means someone voluntarily looked it up!");
+    sendEmailToElliot("Someone used free junk Instagram Z-Link!", "Sir, someone went to free junk site from the instagram z-link! That means someone voluntarily looked it up!");\
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Instagram Z-Link","timestamp":buildTimestamp2()});
 });
 app.get("/34", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Europa%20Cabinet%201%22,%22location%22]");
     sendEmailToElliot("QR Code 34 was just scanned!", "Sir, someone looked inside Europa Cabinet 1 from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Europa Cabinet 1","timestamp":buildTimestamp2()});
 });
 app.get("/35", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Europa%20Bin%201%22,%22location%22]");
     sendEmailToElliot("QR Code 35 was just scanned!", "Sir, someone looked inside Europa Bin 1 from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Europa Bin 1","timestamp":buildTimestamp2()});
 });
 app.get("/36", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Europa%20Bin%202%22,%22location%22]");
     sendEmailToElliot("QR Code 36 was just scanned!", "Sir, someone looked inside Europa Bin 2 from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Europa Bin 2","timestamp":buildTimestamp2()});
 });
 app.get("/37", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Europa%20Bin%203%22,%22location%22]");
     sendEmailToElliot("QR Code 37 was just scanned!", "Sir, someone looked inside Europa Bin 3 from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Europa Bin 3","timestamp":buildTimestamp2()});
 });
 app.get("/38", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Europa%20Bin%204%22,%22location%22]");
     sendEmailToElliot("QR Code 38 was just scanned!", "Sir, someone looked inside Europa Bin 4 from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Europa Bin 4","timestamp":buildTimestamp2()});
 });
 app.get("/39", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Europa%20Bin%205%22,%22location%22]");
     sendEmailToElliot("QR Code 39 was just scanned!", "Sir, someone looked inside Europa Bin 5 from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Europa Bin 5","timestamp":buildTimestamp2()});
 });
 app.get("/40", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com/?search=[%22Europa%20Bin%206%22,%22location%22]");
     sendEmailToElliot("QR Code 40 was just scanned!", "Sir, someone looked inside Europa Bin 6 from its signage!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Europa Bin 6","timestamp":buildTimestamp2()});
+});
+app.get("/41", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
+    res.redirect("mailto:alexa818@umn.edu");
+    sendEmailToElliot("Makerplate QR Scan", "Sir, someone scanned your makerplate QR code!");
+    vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"your makerplate QR code","timestamp":buildTimestamp2()});
 });
 
 var nullTokens = [
@@ -359,8 +396,11 @@ app.get("/sniffTrigger", function(req, res){
     var combinedTokens = "";
     nullTokens.forEach((nullToken)=>{combinedTokens+=nullToken});
     if(combinedTokens.indexOf(queryObject.ip) == -1){
-        sendEmailToElliot("Sniff from "+queryObject.source+"!", "Sir, I detected someone loading "+queryObject.source+" with this token: "+queryObject.ip+"\nThis token was not listed as null. Null tokens are: "+JSON.stringify(nullTokens));
+        sendEmailToElliot("Sniff from "+queryObject.source+"!", "Sir, I detected someone loading "+queryObject.source+" with this token: "+queryObject.ip);
         console.log("Command send from non-null ip, email sent!");
+
+        vahcsdb_client.db("SNIFFS").collection("TYPE_1_SNIFFS").insertOne({"source":queryObject.source,"token":queryObject.ip,"timestamp":buildTimestamp2()});
+        c("Use Saved in VAHCS USES Collection");
     }else{
         console.log("Command send from null token, email not sent");
     }
@@ -522,7 +562,7 @@ function MARIbot_sendEmail(subject, body, emailOption){
     }else if(emailOption == 2){
         emailOp = MARIBotMailOptions2;
     }
-    
+
     MARIBotTransporter.sendMail(emailOp, function(error, info){
         if (error) {
             console.log(error);
@@ -582,7 +622,7 @@ function sendEmailToElliot(subject, body){
     mailOptions.text = body;
 
     sendIPhoneNotification(subject,body);
-    
+
     /*transporter.sendMail(mailOptions, function(error, info){
         if (error) {
             console.log(error);
@@ -630,6 +670,11 @@ function buildTimestamp(){
 function strAdjust(n){
     return (n<10)?"-"+n:n;
 }
+
+function buildTimestamp2(){
+    const date = new Date();
+    return date.toLocaleString('en-US', {timeZone: 'America/Chicago', dateStyle: 'short', timeStyle: 'short'});
+} 
 
 var localSettings = {headless: false, devtools: true };
 var deploymentSettings = {headless: true, devtools: false,  args: ["--no-sandbox", "--disable-setuid-sandbox"]};
@@ -932,7 +977,7 @@ function fillOutExceedLabTimesheet() {
             await page.keyboard.press("Tab");
             await page.waitForTimeout(100);
             await page.keyboard.press("Tab");
-await page.waitForTimeout(100);
+            await page.waitForTimeout(100);
             await page.keyboard.press("Tab");
             progShot(page, "timesheet", i++);
 
@@ -1490,3 +1535,7 @@ const getData = (page) => {
 app.get("*", function(req, res){
     res.send("404!");
 });
+
+function c(str){
+    console.log(str);
+}
