@@ -336,7 +336,7 @@ app.get("/32", function(req, res){       //Keller Free Stuff Table Unlisted Obje
 });
 app.get("/33", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
     res.redirect("https://jrarass-freejunk.herokuapp.com");
-    sendEmailToElliot("Someone used free junk Instagram Z-Link!", "Sir, someone went to free junk site from the instagram z-link! That means someone voluntarily looked it up!");\
+    sendEmailToElliot("Someone used free junk Instagram Z-Link!", "Sir, someone went to free junk site from the instagram z-link! That means someone voluntarily looked it up!");
     vahcsdb_client.db("SNIFFS").collection("TYPE_2_SNIFFS").insertOne({"source":"Instagram Z-Link","timestamp":buildTimestamp2()});
 });
 app.get("/34", function(req, res){       //Keller Free Stuff Table Unlisted Object Request
